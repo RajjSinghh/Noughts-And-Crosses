@@ -10,6 +10,7 @@ def CreateBoard():
 
 
 def PrintBoard(board):
+    print("\n")
     for i in range(3):
         current_row = ""
         for j in range(3):
@@ -17,9 +18,10 @@ def PrintBoard(board):
         print(current_row)
         if i != 2:
             print("_________")
+    print("\n")
 
 def CheckWin(board):
-    winner = None
+    winner = "-"
     for row in board:
         if row[0] == row[1] == row[2]:
             winner = row[0]
@@ -37,28 +39,22 @@ def CheckWin(board):
 
     return winner
 
-if __name__ == "__main__":
-#    board = CreateBoard()
-#    players = [Player("x"), Player("o")]
-#    players[0].MakeMove(board)
-#    players[1].MakeMove(board)
-#    PrintBoard(board)
-    board = [["x", "x", "x"], ["o", "o", "-"], ["-", "-",  "-",]]
-    PrintBoard(board)
-    print(CheckWin(board))
-    print("---------------------")
+def Game():
+    players = [Player("x"), Player("o")]
+    winner = "-"
+    board = CreateBoard()
+    turn = 0
+
+    while turn < 9 and winner == "-":
+        players[turn %2].MakeMove(board)
+        PrintBoard(board)
+        winner = CheckWin(board)
+        turn += 1
+
+    if turn == 9:
+        print("It's a draw!")
+    else:
+        print(f"{winner} wins!")
     
-    board = [["x", "-", "-"], ["x", "-", "-"], ["x", "-",  "-",]]
-    PrintBoard(board)
-    print(CheckWin(board))
-    print("---------------------")
-
-    board = [["x", "-", "o"], ["x", "o", "-"], ["o", "-",  "x",]]
-    PrintBoard(board)
-    print(CheckWin(board))
-    print("---------------------")
-
-    board = [["x", "-", "o"], ["x", "x", "-"], ["o", "-",  "x",]]
-    PrintBoard(board)
-    print(CheckWin(board))
-    print("---------------------")
+if __name__ == "__main__":
+    Game()
