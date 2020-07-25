@@ -40,7 +40,7 @@ def CheckWin(board):
     return winner
 
 def Game():
-    players = [RandomPlayer("x"), Player("o")]
+    players = [RandomPlayer("x"), RandomPlayer("o")]
     winner = "-"
     board = CreateBoard()
     turn = 0
@@ -53,8 +53,13 @@ def Game():
 
     if turn == 9:
         print("It's a draw!")
+        score[2] += 1
     else:
         print(f"{winner} wins!")
+        score[turn % 2] += 1
     
 if __name__ == "__main__":
-    Game()
+    score = [0, 0, 0]
+    for i in range(10000):
+        Game()
+    print(score)
