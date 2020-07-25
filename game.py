@@ -1,4 +1,4 @@
-from player import Player
+from player import *
 
 
 def CreateBoard():
@@ -40,7 +40,7 @@ def CheckWin(board):
     return winner
 
 def Game():
-    players = [Player("x"), Player("o")]
+    players = [RandomPlayer("x"), Player("o")]
     winner = "-"
     board = CreateBoard()
     turn = 0

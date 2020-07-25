@@ -1,3 +1,5 @@
+import random 
+
 class Player:
     def __init__(self, symbol):
         self.symbol = symbol
@@ -19,4 +21,18 @@ class Player:
                     acceptable = True
             except:
                 pass
+        board[row][column] = self.symbol
+
+class RandomPlayer(Player):
+    def __init__(self, symbol):
+        super().__init__(symbol)
+    
+    def MakeMove(self, board):
+        print(f"{self.symbol}'s turn")
+        acceptable = False
+        while not acceptable:
+            row = random.randint(0, 2)
+            column = random.randint(0, 2)
+            if board[row][column] == "-":
+                acceptable = True
         board[row][column] = self.symbol
