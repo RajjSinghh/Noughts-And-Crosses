@@ -34,13 +34,14 @@ def CheckWin(board):
 
     if board[0][0] == board[1][1] == board[2][2]:
         winner = board[0][0]
+
     if board[0][2] == board[1][1] == board[2][0]:
         winner = board[0][2]
 
     return winner
 
 def Game():
-    players = [RandomPlayer("x"), RandomPlayer("o")]
+    players = [Player("x"), Player("o")]
     winner = "-"
     board = CreateBoard()
     turn = 0
@@ -53,13 +54,9 @@ def Game():
 
     if turn == 9:
         print("It's a draw!")
-        score[2] += 1
+
     else:
         print(f"{winner} wins!")
-        score[turn % 2] += 1
     
 if __name__ == "__main__":
-    score = [0, 0, 0]
-    for i in range(10000):
-        Game()
-    print(score)
+    Game()

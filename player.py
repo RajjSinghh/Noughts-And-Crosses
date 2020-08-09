@@ -1,3 +1,4 @@
+import sys
 import random 
 
 class Player:
@@ -19,8 +20,11 @@ class Player:
                     raise ValueError("Square already taken")
                 else:
                     acceptable = True
+            except KeyboardInterrupt:
+                sys.exit()
             except:
                 pass
+
         board[row][column] = self.symbol
 
 class RandomPlayer(Player):
