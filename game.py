@@ -1,6 +1,5 @@
 from player import *
 
-
 def CreateBoard():
     board = []
     for i in range(3):
@@ -22,22 +21,19 @@ def PrintBoard(board):
 
 def CheckWin(board):
     winner = "-"
+    #Horizontal
     for row in board:
-        if row[0] == row[1] == row[2]:
+        if row[0] == row[1] and row[0] == row[2]:
             winner = row[0]
-            break
-
+    #Vertical
     for column in range(3):
-        if board[0][column] ==  board[1][column] == board[2][column]:
+        if board[0][column] == board[1][column] and board[0][column] == board[2][column]:
             winner = board[0][column]
-            break
-
-    if board[0][0] == board[1][1] == board[2][2]:
+    #Diagonal
+    if board[0][0] == board[1][1] and board[0][0] == board[2][2]:
         winner = board[0][0]
-
-    if board[0][2] == board[1][1] == board[2][0]:
+    if board[0][2] == board[1][1] and board[0][2] == board[2][0]:
         winner = board[0][2]
-
     return winner
 
 def Game():
